@@ -1,10 +1,12 @@
-import { Box } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
+import Navbar from '../pages/layout/navbar/Navbar'
 
 const Home = () => {
   return (
-    <Box>
+    <Flex direction={'column'}>
+        <Navbar/>
       Home Compoennt is inddeed
-    </Box>
+    </Flex>
   )
 }
 
