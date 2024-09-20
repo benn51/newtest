@@ -1,14 +1,14 @@
 
-
+import { Flex } from '@chakra-ui/react'
 import './App.css'
-
+import Home from './pages/Home'
 function App() {
 
 
   return (
-    <div>
-  <p>HoemSweet Home Agin som ebig change Yall</p> 
-    </div>
+    <Flex>
+ <Home/>
+    </Flex>
   )
 }
 
