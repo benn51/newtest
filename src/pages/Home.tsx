@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <Flex direction={'column'}>
         <Navbar/>
-      Home Compoennt is inddeed
+      
     </Flex>
   )
 }
