@@ -6,7 +6,7 @@ const Home = () => {
     <Flex direction={'column'}>
        Below Nav bar
         <Navbar/>
-      Home Compoennt is inddeed
+      
     </Flex>
   )
 }
