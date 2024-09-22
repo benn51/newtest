@@ -4,7 +4,7 @@ import {Flex,Box} from "@chakra-ui/react"
 const Navbar = () => {
   return (
     <Flex>
-     <Box>  Header</Box>
+     <Box>  Top Header</Box>
     </Flex>
   )
 }
