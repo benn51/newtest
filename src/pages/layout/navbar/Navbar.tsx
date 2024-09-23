@@ -6,7 +6,8 @@ const Navbar = () => {
     <Flex direction={'column'}> 
 <Text>This is coming from the Navbar Compnet </Text>
      <Box>  Home</Box>
-     <Box>  Profile</Box>
+     <Box> Profile</Box>
+     <Box> Experience</Box>
     </Flex>
   )
 }
