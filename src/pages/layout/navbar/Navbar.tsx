@@ -1,15 +1,17 @@
-
-import {Flex,Box,Text} from "@chakra-ui/react"
+import { Flex, Text, List, UnorderedList } from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
-    <Flex direction={'column'}> 
-<Text>This is coming from the Navbar Compnet </Text>
-     <Box>  Home</Box>
-     <Box> Profile</Box>
-     <Box> Experience</Box>
+    <Flex direction={"row"}>
+      <Text>This is coming from the Navbar Compnet </Text>
+      <UnorderedList>
+        <List> Home</List>
+        <List> Profile</List>
+        <List> Experience</List>
+        <List> More menu Items</List>
+      </UnorderedList>
     </Flex>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
