@@ -1,11 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import "./App.css";
-import Home from "./pages/Home";
+
+import Login from "./pages/login/Login";
 
 function App() {
   return (
     <Flex>
-      <Home />
+      <Login />
     </Flex>
   );
 }
