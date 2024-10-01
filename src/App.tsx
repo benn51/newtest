@@ -1,13 +1,11 @@
-import { Flex } from "@chakra-ui/react";
-import "./App.css";
-
-import Login from "./pages/login/Login";
+import { BrowserRouter } from "react-router-dom";
+import Top from "./pages/Top";
 
 function App() {
   return (
-    <Flex>
-      <Login />
-    </Flex>
+    <BrowserRouter>
+      <Top />
+    </BrowserRouter>
   );
 }
 
