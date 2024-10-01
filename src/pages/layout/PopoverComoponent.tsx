@@ -4,10 +4,8 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
   PopoverArrow,
-  PopoverCloseButton,
 } from "@chakra-ui/react";
 import DropDownMenu from "../../shared-components/DropDownMenu";
 type propTypes = {
