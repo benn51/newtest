@@ -1,0 +1,31 @@
+/* ImageSlider.css */
+.slider-container {
+  width: 100%; /* Full width */
+  overflow: hidden; /* Hide images that are out of view */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  display: flex;
+  width: fit-content;
+  animation: slide 10s linear infinite; /* Infinite animation loop */
+}
+
+.slider-image {
+  width: 200px; /* Set the width of each image */
+  height: 150px; /* Set the height of each image */
+  margin-right: 10px; /* Space between images */
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0); /* Start from the first image */
+  }
+  to {
+    transform: translateX(
+      -100%
+    ); /* Move the entire row of images to the left */
+  }
+}
