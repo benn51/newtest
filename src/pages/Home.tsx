@@ -1,45 +1,61 @@
-import { Flex } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import axios from "axios";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Flex, Wrap } from "@chakra-ui/react";
+import React from "react";
+import { useSpring, animated } from "react-spring";
+import "./HeroSection.css";
+import { useInView } from "react-intersection-observer";
+import "./SlideInComponent.css";
+import CountUp from "react-countup";
+
+import Lottie from "react-lottie";
+import Typewriter from "typewriter-effect";
+import "./HeroSection.css";
+import "./SvgDrawing.css";
+import { div } from "framer-motion/client";
+const images = [
+  "https://via.placeholder.com/300x200?text=Image+1",
+  "https://via.placeholder.com/300x200?text=Image+2",
+  "https://via.placeholder.com/300x200?text=Image+3",
+  "https://via.placeholder.com/300x200?text=Image+4",
+  "https://via.placeholder.com/300x200?text=Image+5",
+];
 
 const Home = () => {
+  const fadeIn = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    delay: 500,
+  });
+
   useEffect(() => {
     test();
-  }, []);
-
+  });
   const test = async () => {
-    const options = {
-      method: "GET", // or 'POST', 'PUT', etc., depending on the API
-      url: "https://restcountries.com/v3.1/independent?status=true",
-      // headers: {
-      //   "x-rapidapi-host": "movie-database-alternative.p.rapidapi.com",
-      //   "x-rapidapi-key": "5bbee2d9e1msh3b0c6a50f28b79bp1457ecjsnfcbd6f9f52ad",
-      //   "Content-Type": "application/json",
-      // },
-    };
-
-    try {
-      const data = await axios.request(options);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = await axios.get("http://localhost:5001/users");
+    console.log(data);
   };
 
   return (
-    <Box textAlign="center" p={6}>
-      <Text fontSize="2xl" mb={4}>
-        Welcome to the Home Page!
-      </Text>
-
-      {/* Container for animated images */}
-      <Flex
-        overflow="hidden"
-        justifyContent="center"
-        alignItems="center"
-      ></Flex>
-    </Box>
+    // <div className="hero">
+    //   <animated.div style={fadeIn} className="hero-content">
+    //     <h1>Welcome to Our Service</h1>
+    //     <p>Your success starts here</p>
+    //     <button>Get Started</button>
+    //   </animated.div>
+    //   <animated.div style={fadeIn} className="hero-content">
+    //     <h1>Welcome to Our Service</h1>
+    //     <p>Your success starts here</p>
+    //     <button>Get Started</button>
+    //   </animated.div>
+    // </div>
+    <div className="image-container">
+      {images.map((src, index) => (
+        <div key={index} className="image-box">
+          <img src={src} alt={`Image ${index + 1}`} />
+        </div>
+      ))}
+    </div>
   );
 };
 
