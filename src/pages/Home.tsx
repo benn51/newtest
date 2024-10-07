@@ -1,61 +1,59 @@
-import { useEffect, useRef } from "react";
-import axios from "axios";
-import { Box, Text, Flex, Wrap } from "@chakra-ui/react";
-import React from "react";
-import { useSpring, animated } from "react-spring";
-import "./HeroSection.css";
-import { useInView } from "react-intersection-observer";
-import "./SlideInComponent.css";
-import CountUp from "react-countup";
+import { Box, Text, Flex } from "@chakra-ui/react";
 
-import Lottie from "react-lottie";
-import Typewriter from "typewriter-effect";
-import "./HeroSection.css";
-import "./SvgDrawing.css";
-import { div } from "framer-motion/client";
-const images = [
-  "https://via.placeholder.com/300x200?text=Image+1",
-  "https://via.placeholder.com/300x200?text=Image+2",
-  "https://via.placeholder.com/300x200?text=Image+3",
-  "https://via.placeholder.com/300x200?text=Image+4",
-  "https://via.placeholder.com/300x200?text=Image+5",
-];
+import backgroung from "../assets/backgroung.webp";
+import backgroundImage2 from "../assets/backroundImage2.png";
+import backgroundImage3 from "../assets/backgroundImage3.png";
+import bb from "../assets/bb.png";
 
 const Home = () => {
-  const fadeIn = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-    delay: 500,
-  });
-
-  useEffect(() => {
-    test();
-  });
-  const test = async () => {
-    const data = await axios.get("http://localhost:5001/users");
-    console.log(data);
-  };
-
   return (
-    // <div className="hero">
-    //   <animated.div style={fadeIn} className="hero-content">
-    //     <h1>Welcome to Our Service</h1>
-    //     <p>Your success starts here</p>
-    //     <button>Get Started</button>
-    //   </animated.div>
-    //   <animated.div style={fadeIn} className="hero-content">
-    //     <h1>Welcome to Our Service</h1>
-    //     <p>Your success starts here</p>
-    //     <button>Get Started</button>
-    //   </animated.div>
-    // </div>
-    <div className="image-container">
-      {images.map((src, index) => (
-        <div key={index} className="image-box">
-          <img src={src} alt={`Image ${index + 1}`} />
-        </div>
-      ))}
-    </div>
+    <Flex align={"center"} justify={"center"}>
+      <Flex
+        overflow={"scroll"}
+        h={"fit-content"}
+        direction={"column"}
+        align={"center"}
+        justify={"center"}
+      >
+        <Box
+          bgImage={backgroundImage2}
+          bgAttachment={"fixed"}
+          bgPosition={"center"}
+          bgSize={"cover"}
+          zIndex={1}
+          h={"90vh"}
+          w={"90vw"}
+          opacity={0.5}
+        >
+          <Flex w={"100%"} h={"100%"} zIndex={1}>
+            <Box w={"100%"} h={"100%"}>
+              <Text color={"white"}> First top COntent</Text>
+            </Box>
+          </Flex>
+        </Box>
+
+        <Box
+          bgImage={backgroundImage3}
+          bgAttachment={"fixed"}
+          bgPosition={"center"}
+          bgSize={"cover"}
+          zIndex={1}
+          h={"90vh"}
+          w={"90vw"}
+          opacity={0.4}
+        ></Box>
+        <Box
+          bgImage={bb}
+          bgAttachment={"fixed"}
+          bgPosition={"center"}
+          bgSize={"cover"}
+          zIndex={1}
+          h={"90vh"}
+          w={"90vw"}
+          opacity={0.2}
+        ></Box>
+      </Flex>
+    </Flex>
   );
 };
 
