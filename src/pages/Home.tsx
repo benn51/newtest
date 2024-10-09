@@ -127,17 +127,15 @@ const Home = () => {
               {skillsDetails.map((item: any, index) => (
                 <MotionBox
                   key={item.id}
-                  initial={{ opacity: 0, y: 50, scale: 1, x: 0, y: 0 }}
+                  initial={{ opacity: 0, y: 50, scale: 1, x: 0 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: item.id * 0.2 }}
                   whileHover={{
-                    scale: 1.5, // Slowly zoom the box
-                    x: "5vw", // Center the box horizontally
-                    y: "5vh", // Center the box vertically
+                    scale: 1.1, // Slowly zoom the box
+                    x: 0, // Center the box horizontally
+                    y: 0, // Center the box vertically
                     transition: { duration: 0.5 }, // Smooth transition
                   }}
-                  position="relative"
-                  zIndex={10}
                 >
                   <ProfileCards
                     key={index}
@@ -156,6 +154,12 @@ const Home = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    x: 0,
+                    y: 0,
+                    transition: { duration: 0.5 },
+                  }}
                 >
                   <ProfileCards
                     key={index}
@@ -174,6 +178,12 @@ const Home = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    x: 0,
+                    y: 0,
+                    transition: { duration: 0.5 },
+                  }}
                 >
                   <ProfileCards
                     key={index}

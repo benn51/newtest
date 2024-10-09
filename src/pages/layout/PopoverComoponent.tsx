@@ -1,5 +1,5 @@
-import { Flex } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Flex, Button } from "@chakra-ui/react";
+
 import {
   Popover,
   PopoverTrigger,
@@ -17,9 +17,11 @@ const PopoverComoponent = (props: propTypes) => {
   const dd = ["abeeb", "gemeda"];
   return (
     <Flex>
-      <Popover>
+      <Popover trigger={"hover"}>
         <PopoverTrigger>
-          <Link to={`/${props.linkTo}`}> {props.linkName}</Link>
+          <Button w={"130px"} variant={"link"} colorScheme="blue">
+            {props.linkName}
+          </Button>
         </PopoverTrigger>
         <PopoverContent w={"150px"}>
           <PopoverArrow />

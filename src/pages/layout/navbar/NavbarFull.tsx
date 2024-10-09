@@ -1,4 +1,4 @@
-import { Flex, List } from "@chakra-ui/react";
+import { Button, Flex, List } from "@chakra-ui/react";
 import PopoverComoponent from "../PopoverComoponent";
 import { Link } from "react-router-dom";
 
@@ -7,25 +7,25 @@ const NavbarFull = () => {
     <Flex
       direction={"row"}
       justify={"end"}
-      gap={8}
+      gap={4}
       h={"10vh"}
       bg={"gray.100"}
       align={"center"}
       w={"100%"}
       p={5}
     >
-      <List>
+      <Button width={"130px"} colorScheme={"blue"} variant={"link"}>
         <Link to={"/home"}> Home</Link>
-      </List>
-      <List>
+      </Button>
+      <Button width={"130px"} colorScheme={"blue"} variant={"link"}>
         <Link to={"/blogs"}> Blogs</Link>
-      </List>
-      <List>
+      </Button>
+      <Button width={"130px"} colorScheme={"blue"} variant={"link"}>
         <Link to={"/dashboard"}> Dashboard</Link>
-      </List>
-      <List>
+      </Button>
+      <Button width={"130px"} colorScheme={"blue"} variant={"link"}>
         <Link to={"/login"}> Login</Link>
-      </List>
+      </Button>
       <PopoverComoponent
         linkTo="profile"
         linkPage="Profile"
