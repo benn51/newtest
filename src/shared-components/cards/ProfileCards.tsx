@@ -1,13 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import {
-  Card,
-  CardBody,
-  Text,
-  Flex,
-  Stack,
-  Heading,
-  CardFooter,
-} from "@chakra-ui/react";
+import { Card, CardBody, Text, Stack, Heading } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 type propType = {
   cardText: string;

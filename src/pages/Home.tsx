@@ -1,9 +1,25 @@
-import { Box, Text, Flex, Button, ButtonGroup } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Flex,
+  Button,
+  ButtonGroup,
+  OrderedList,
+  List,
+} from "@chakra-ui/react";
 import backgroundImage2 from "../assets/backroundImage2.png";
 import backgroundImage3 from "../assets/backgroundImage3.png";
 import bb from "../assets/bb.png";
 import { useRef, useState } from "react";
 import ProfileCards from "../shared-components/cards/ProfileCards";
+import ProjectCards from "../shared-components/cards/ProjectCards";
+import { projectDetails } from "../assets/constants/projectDetails";
+import ExperienceCard from "../shared-components/cards/ExperienceCard";
+import { experienceDet } from "../assets/constants/experienceDetails";
+import { skillsDetails } from "../assets/constants/skillsDetails";
+import { skillDetails2 } from "../assets/constants/skillsDetails";
+import { skillDetails3 } from "../assets/constants/skillsDetails";
+import { motion } from "framer-motion";
 const Home = () => {
   const skills: any = useRef();
   const experience: any = useRef();
@@ -11,6 +27,8 @@ const Home = () => {
   const [skillisActive, setSkillisActive] = useState(false);
   const [projectsActive, setProjectisActive] = useState(false);
   const [experisActive, setExperisActive] = useState(false);
+  const MotionBox = motion(Box);
+  const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
 
   const scrollToExperience = () => {
     if (experience.current) {
@@ -106,154 +124,66 @@ const Home = () => {
             direction={"row"}
           >
             <Flex direction={"column"} width={"25%"} gap={4}>
-              <ProfileCards
-                cardText={"Javascript"}
-                value={95}
-                propgressLabel="95%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Typescript"}
-                value={95}
-                propgressLabel="95%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Java"}
-                value={95}
-                propgressLabel="95%"
-                yearsOfExperience="3 Years"
-              />
-              <ProfileCards
-                cardText={"React"}
-                value={95}
-                propgressLabel="95%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Angular"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="3 Years"
-              />
-              <ProfileCards
-                cardText={"HTML & CSS"}
-                value={90}
-                propgressLabel="95%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Node JS, Express"}
-                value={90}
-                propgressLabel="95%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Serverless"}
-                value={95}
-                propgressLabel="95%"
-                yearsOfExperience="3 Years"
-              />
+              {skillsDetails.map((item: any, index) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50, scale: 1, x: 0, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                  whileHover={{
+                    scale: 1.5, // Slowly zoom the box
+                    x: "5vw", // Center the box horizontally
+                    y: "5vh", // Center the box vertically
+                    transition: { duration: 0.5 }, // Smooth transition
+                  }}
+                  position="relative"
+                  zIndex={10}
+                >
+                  <ProfileCards
+                    key={index}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                </MotionBox>
+              ))}
             </Flex>
             <Flex direction={"column"} width={"25%"} gap={4}>
-              <ProfileCards
-                cardText={"AWS Lambda"}
-                value={95}
-                propgressLabel="95%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"AWS Amplify"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"AWS API gateway"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"AWS Cognito"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"AWS S3"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"Cloudwatch"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"EC2"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"Terraform"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
+              {skillDetails2.map((item: any, index: any) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                >
+                  <ProfileCards
+                    key={index}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                </MotionBox>
+              ))}
             </Flex>
             <Flex direction={"column"} width={"25%"} gap={4}>
-              <ProfileCards
-                cardText={"MySQL,SQLserver"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"MongoDB"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="3 Years"
-              />
-              <ProfileCards
-                cardText={"Sequelize"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Indexing"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="2 Years"
-              />
-              <ProfileCards
-                cardText={"DBMS"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="3 Years"
-              />
-              <ProfileCards
-                cardText={"Git,Github"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Jenkins, Github Actions"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="4 Years"
-              />
-              <ProfileCards
-                cardText={"Docker"}
-                value={90}
-                propgressLabel="90%"
-                yearsOfExperience="3 Years"
-              />
+              {skillDetails3.map((item: any, index: any) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                >
+                  <ProfileCards
+                    key={index}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                </MotionBox>
+              ))}
             </Flex>
           </Flex>
         </Box>
@@ -266,10 +196,52 @@ const Home = () => {
           zIndex={1}
           h={"90vh"}
           w={"90vw"}
-          opacity={0.4}
           ref={experience}
           borderRadius={"10px"}
-        ></Box>
+        >
+          <Flex align={"end"} w={"100%"} justify={"end"} pe={"10%"}>
+            <ButtonGroup p={2}>
+              <Button
+                isActive={skillisActive}
+                onClick={scrollToSkills}
+                colorScheme={"blue"}
+                w={"150px"}
+              >
+                Skills
+              </Button>
+              <Button
+                isActive={projectsActive}
+                onClick={scrollToProject}
+                colorScheme={"blue"}
+                w={"150px"}
+              >
+                Projects
+              </Button>
+              <Button
+                isActive={experisActive}
+                onClick={scrollToExperience}
+                colorScheme={"blue"}
+                w={"150px"}
+              >
+                Experience
+              </Button>
+            </ButtonGroup>
+          </Flex>
+          <OrderedList pt={"5%"} ps={"1%"}>
+            <List spacing={3}>
+              {experienceDet.map((item: any, index) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <ExperienceCard key={item.id} experience_item={item} />
+                </MotionBox>
+              ))}
+            </List>
+          </OrderedList>
+        </Box>
         <Box
           bgImage={bb}
           bgAttachment={"fixed"}
@@ -278,10 +250,51 @@ const Home = () => {
           zIndex={1}
           h={"90vh"}
           w={"90vw"}
-          opacity={0.2}
           ref={projects}
           borderRadius={"10px"}
-        ></Box>
+        >
+          <Flex align={"end"} w={"100%"} justify={"end"} pe={"10%"}>
+            <ButtonGroup p={2}>
+              <Button
+                isActive={skillisActive}
+                onClick={scrollToSkills}
+                colorScheme={"blue"}
+                w={"150px"}
+              >
+                Skills
+              </Button>
+              <Button
+                isActive={projectsActive}
+                onClick={scrollToProject}
+                colorScheme={"blue"}
+                w={"150px"}
+              >
+                Projects
+              </Button>
+              <Button
+                isActive={experisActive}
+                onClick={scrollToExperience}
+                colorScheme={"blue"}
+                w={"150px"}
+              >
+                Experience
+              </Button>
+            </ButtonGroup>
+          </Flex>
+          <Flex
+            direction={"column"}
+            align={"start"}
+            justify={"start"}
+            ps={"5%"}
+            pt={"5%"}
+            gap={4}
+            h={"90%"}
+          >
+            {projectDetails.map((item: any) => (
+              <ProjectCards key={item.title} projects={item} />
+            ))}
+          </Flex>
+        </Box>
       </Flex>
     </Flex>
   );
