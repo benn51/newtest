@@ -27,7 +27,7 @@ type propTypes = {
 };
 const ExperienceCard = (props: propTypes) => {
   return (
-    <Card w={"85vw"} bg={"blue.300"} h={"110px"} direction={"row"}>
+    <Card w={"85vw"} bg={"blue.300"} h={"40%"} direction={"row"}>
       <CardBody>
         <ListItem ps={5} fontSize={"lg"} fontFamily={"monospace"}>
           <ListIcon as={CheckCircleIcon} color="orange.500" />

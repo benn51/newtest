@@ -1,4 +1,5 @@
 import { Flex, Button } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 
 import {
   Popover,
@@ -12,14 +13,29 @@ type propTypes = {
   linkTo: string;
   linkPage: string;
   linkName: string;
+  changeActive: boolean;
+  resetActive: () => void;
 };
 const PopoverComoponent = (props: propTypes) => {
   const dd = ["abeeb", "gemeda"];
+  const [active, setActive] = useState(false);
+  const manageActive = () => {
+    setActive(true);
+    props.resetActive();
+  };
+  useEffect(() => {
+    setActive(false);
+  }, [props.changeActive]);
   return (
     <Flex>
       <Popover trigger={"hover"}>
         <PopoverTrigger>
-          <Button w={"130px"} variant={"link"} colorScheme="blue">
+          <Button
+            w={"110px"}
+            variant={"link"}
+            colorScheme={active ? "orange" : "blue"}
+            onClick={manageActive}
+          >
             {props.linkName}
           </Button>
         </PopoverTrigger>

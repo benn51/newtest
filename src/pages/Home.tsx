@@ -103,9 +103,11 @@ const Home = () => {
         justify={"center"}
         w={"90vw"}
         height={"fit-content"}
+        gap={3}
       >
         <Box
           bgImage={backgroundImage2}
+          bg={"blue.900"}
           bgAttachment={"fixed"}
           bgPosition={"center"}
           bgSize={"cover"}
@@ -114,6 +116,7 @@ const Home = () => {
           w={"90vw"}
           ref={skills}
           borderRadius={"10px"}
+          overflow={"scroll"}
         >
           <Flex
             w={"100%"}
@@ -123,7 +126,7 @@ const Home = () => {
             justify={"center"}
             direction={"row"}
           >
-            <Flex direction={"column"} width={"25%"} gap={4}>
+            <Flex direction={"column"} width={"25%"} gap={2}>
               {skillsDetails.map((item: any, index) => (
                 <MotionBox
                   key={item.id}
@@ -147,7 +150,7 @@ const Home = () => {
                 </MotionBox>
               ))}
             </Flex>
-            <Flex direction={"column"} width={"25%"} gap={4}>
+            <Flex direction={"column"} width={"25%"} gap={2}>
               {skillDetails2.map((item: any, index: any) => (
                 <MotionBox
                   key={item.id}
@@ -171,7 +174,7 @@ const Home = () => {
                 </MotionBox>
               ))}
             </Flex>
-            <Flex direction={"column"} width={"25%"} gap={4}>
+            <Flex direction={"column"} width={"25%"} gap={2}>
               {skillDetails3.map((item: any, index: any) => (
                 <MotionBox
                   key={item.id}
@@ -200,6 +203,7 @@ const Home = () => {
 
         <Box
           bgImage={backgroundImage3}
+          bg={"blue.900"}
           bgAttachment={"fixed"}
           bgPosition={"center"}
           bgSize={"cover"}
@@ -208,6 +212,7 @@ const Home = () => {
           w={"90vw"}
           ref={experience}
           borderRadius={"10px"}
+          overflow={"scroll"}
         >
           <Flex align={"end"} w={"100%"} justify={"end"} pe={"10%"}>
             <ButtonGroup p={2}>
@@ -237,20 +242,22 @@ const Home = () => {
               </Button>
             </ButtonGroup>
           </Flex>
-          <OrderedList pt={"5%"} ps={"1%"}>
-            <List spacing={3}>
-              {experienceDet.map((item: any, index) => (
-                <MotionBox
-                  key={item.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                  <ExperienceCard key={item.id} experience_item={item} />
-                </MotionBox>
-              ))}
-            </List>
-          </OrderedList>
+          <Box>
+            <OrderedList pt={"1%"} ps={"1%"}>
+              <List spacing={3}>
+                {experienceDet.map((item: any, index) => (
+                  <MotionBox
+                    key={item.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                  >
+                    <ExperienceCard key={item.id} experience_item={item} />
+                  </MotionBox>
+                ))}
+              </List>
+            </OrderedList>
+          </Box>
         </Box>
         <Box
           bgImage={bb}
@@ -262,8 +269,9 @@ const Home = () => {
           w={"90vw"}
           ref={projects}
           borderRadius={"10px"}
+          overflow={"scroll"}
         >
-          <Flex align={"end"} w={"100%"} justify={"end"} pe={"10%"}>
+          <Flex align={"end"} w={"90%"} justify={"end"} pe={"10%"}>
             <ButtonGroup p={2}>
               <Button
                 isActive={skillisActive}
@@ -296,7 +304,7 @@ const Home = () => {
             align={"start"}
             justify={"start"}
             ps={"5%"}
-            pt={"5%"}
+            pt={"1%"}
             gap={4}
             h={"90%"}
           >

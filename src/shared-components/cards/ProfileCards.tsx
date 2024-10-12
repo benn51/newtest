@@ -9,19 +9,18 @@ type propType = {
 };
 const ProfileCards = (props: propType) => {
   return (
-    <Box>
+    <Box h={"10vh"}>
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="solid"
         justify={"space-between"}
-        borderRadius={"30px"}
+        borderRadius={"10px"}
         colorScheme="purple"
         align={"center"}
-        pe={"5%"}
         bg={"blue.300"}
         w={"95%"}
-        h={"100px"}
+        h={"100%"}
       >
         <Stack>
           <CardBody>
@@ -30,18 +29,18 @@ const ProfileCards = (props: propType) => {
           </CardBody>
         </Stack>
 
-        <Box p={3}>
+        {/* <Box p={3}>
           <CircularProgress
             value={props.value}
             color="orange.400"
-            size={"85px"}
+            size={"75px"}
             thickness={"15px"}
           >
             <CircularProgressLabel>
               {props.propgressLabel}
             </CircularProgressLabel>
           </CircularProgress>
-        </Box>
+        </Box> */}
       </Card>
     </Box>
   );
