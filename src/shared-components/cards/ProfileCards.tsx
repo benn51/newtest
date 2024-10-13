@@ -9,7 +9,20 @@ type propType = {
 };
 const ProfileCards = (props: propType) => {
   return (
-    <Box h={"10vh"}>
+    <Box
+      h={"30vh"}
+      w={{ base: "5%", md: "2%", sm: "30%", lg: "10%" }}
+      bg="gray.300"
+      border="1px solid"
+      borderColor="gray.300"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      fontSize="lg"
+      flexShrink="0"
+      rounded="md"
+      textAlign="center"
+    >
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"

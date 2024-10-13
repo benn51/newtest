@@ -6,20 +6,23 @@ import {
   ButtonGroup,
   OrderedList,
   List,
+  IconButton,
+  Center,
 } from "@chakra-ui/react";
-import backgroundImage2 from "../assets/backroundImage2.png";
-import backgroundImage3 from "../assets/backgroundImage3.png";
-import bb from "../assets/bb.png";
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import backgroundImage2 from "../../assets/backroundImage2.png";
+import backgroundImage3 from "../../assets/backgroundImage3.png";
+import bb from "../../assets/bb.png";
 import { useRef, useState } from "react";
-import ProfileCards from "../shared-components/cards/ProfileCards";
-import ProjectCards from "../shared-components/cards/ProjectCards";
-import { projectDetails } from "../assets/constants/projectDetails";
-import ExperienceCard from "../shared-components/cards/ExperienceCard";
-import { experienceDet } from "../assets/constants/experienceDetails";
-import { skillsDetails } from "../assets/constants/skillsDetails";
-import { skillDetails2 } from "../assets/constants/skillsDetails";
-import { skillDetails3 } from "../assets/constants/skillsDetails";
+import ProfileCards from "../../shared-components/cards/ProfileCards";
+import ProjectCards from "../../shared-components/cards/ProjectCards";
+import { projectDetails } from "../../assets/constants/projectDetails";
+import ExperienceCard from "../../shared-components/cards/ExperienceCard";
+import { experienceDet } from "../../assets/constants/experienceDetails";
+import { skillsDetailsAll } from "../../assets/constants/skillsDetails";
+
 import { motion } from "framer-motion";
+import IntroCard from "./IntroCard";
 const Home = () => {
   const skills: any = useRef();
   const experience: any = useRef();
@@ -28,7 +31,20 @@ const Home = () => {
   const [projectsActive, setProjectisActive] = useState(false);
   const [experisActive, setExperisActive] = useState(false);
   const MotionBox = motion(Box);
-  const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+
+  const newRef: any = useRef(null);
+
+  const scrollLeft = () => {
+    if (newRef.current) {
+      newRef.current.scrollLeft -= 200; // Scroll to the left
+    }
+  };
+
+  const scrollRight = () => {
+    if (newRef.current) {
+      newRef.current.scrollLeft += 200; // Scroll to the right
+    }
+  };
 
   const scrollToExperience = () => {
     if (experience.current) {
@@ -114,92 +130,58 @@ const Home = () => {
           zIndex={1}
           h={"90vh"}
           w={"90vw"}
-          ref={skills}
           borderRadius={"10px"}
           overflow={"scroll"}
         >
-          <Flex
-            w={"100%"}
-            h={"100%"}
-            zIndex={10}
-            align={"center"}
-            justify={"center"}
-            direction={"row"}
-          >
-            <Flex direction={"column"} width={"25%"} gap={2}>
-              {skillsDetails.map((item: any, index) => (
-                <MotionBox
-                  key={item.id}
-                  initial={{ opacity: 0, y: 50, scale: 1, x: 0 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
-                  whileHover={{
-                    scale: 1.1, // Slowly zoom the box
-                    x: 0, // Center the box horizontally
-                    y: 0, // Center the box vertically
-                    transition: { duration: 0.5 }, // Smooth transition
-                  }}
-                >
-                  <ProfileCards
-                    key={index}
-                    cardText={item.title}
-                    value={item.value}
-                    propgressLabel={item.value_label}
-                    yearsOfExperience={item.years}
-                  />
-                </MotionBox>
-              ))}
-            </Flex>
-            <Flex direction={"column"} width={"25%"} gap={2}>
-              {skillDetails2.map((item: any, index: any) => (
-                <MotionBox
-                  key={item.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
-                  whileHover={{
-                    scale: 1.1,
-                    x: 0,
-                    y: 0,
-                    transition: { duration: 0.5 },
-                  }}
-                >
-                  <ProfileCards
-                    key={index}
-                    cardText={item.title}
-                    value={item.value}
-                    propgressLabel={item.value_label}
-                    yearsOfExperience={item.years}
-                  />
-                </MotionBox>
-              ))}
-            </Flex>
-            <Flex direction={"column"} width={"25%"} gap={2}>
-              {skillDetails3.map((item: any, index: any) => (
-                <MotionBox
-                  key={item.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
-                  whileHover={{
-                    scale: 1.1,
-                    x: 0,
-                    y: 0,
-                    transition: { duration: 0.5 },
-                  }}
-                >
-                  <ProfileCards
-                    key={index}
-                    cardText={item.title}
-                    value={item.value}
-                    propgressLabel={item.value_label}
-                    yearsOfExperience={item.years}
-                  />
-                </MotionBox>
-              ))}
-            </Flex>
-          </Flex>
+          <IntroCard />
         </Box>
+        <Flex
+          bgImage={backgroundImage2}
+          bg={"blue.900"}
+          bgAttachment={"fixed"}
+          bgPosition={"center"}
+          bgSize={"cover"}
+          zIndex={1}
+          h={"90vh"}
+          w={"90vw"}
+          ref={skills}
+          borderRadius={"10px"}
+          justify={"center"}
+          overflow="hidden"
+          mx="auto"
+        >
+          <Flex align={"center"} direction={"row"} justify={"center"}>
+            <IconButton
+              aria-label="Scroll Left"
+              icon={<ArrowBackIcon />}
+              onClick={scrollLeft}
+            />
+            <Flex
+              bg={"black"}
+              w={"80%"}
+              h={"50%"}
+              overflow={"hidden"}
+              justify={"center"}
+              align={"center"}
+              ref={newRef}
+            >
+              {skillsDetailsAll.map((item: any) => (
+                <ProfileCards
+                  key={item.id}
+                  cardText={item.title}
+                  value={item.value}
+                  propgressLabel={item.value_label}
+                  yearsOfExperience={item.years}
+                />
+              ))}
+            </Flex>
+            <IconButton
+              aria-label="Scroll Right"
+              icon={<ArrowForwardIcon />}
+              onClick={scrollRight}
+            />
+          </Flex>
+        </Flex>
 
         <Box
           bgImage={backgroundImage3}
@@ -319,3 +301,78 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* <Flex direction={"column"} width={"25%"} gap={2}>
+              {skillsDetails.map((item: any, index) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50, scale: 1, x: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                  whileHover={{
+                    scale: 1.1, // Slowly zoom the box
+                    x: 0, // Center the box horizontally
+                    y: 0, // Center the box vertically
+                    transition: { duration: 0.5 }, // Smooth transition
+                  }}
+                >
+                  <ProfileCards
+                    key={index}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                </MotionBox>
+              ))}
+            </Flex>
+            <Flex direction={"column"} width={"25%"} gap={2}>
+              {skillDetails2.map((item: any, index: any) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    x: 0,
+                    y: 0,
+                    transition: { duration: 0.5 },
+                  }}
+                >
+                  <ProfileCards
+                    key={index}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                </MotionBox>
+              ))}
+            </Flex>
+            <Flex direction={"column"} width={"25%"} gap={2}>
+              {skillDetails3.map((item: any, index: any) => (
+                <MotionBox
+                  key={item.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item.id * 0.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    x: 0,
+                    y: 0,
+                    transition: { duration: 0.5 },
+                  }}
+                >
+                  <ProfileCards
+                    key={index}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                </MotionBox>
+              ))}
+            </Flex> */
+}
