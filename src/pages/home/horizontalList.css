@@ -1,0 +1,41 @@
+.horizontal-list-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100vw; /* Container width */
+  margin: 20px auto;
+  background-color: green;
+  height: 1500px;
+  overflow: scroll;
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-item {
+  min-width: 200px; /* Fixed width for each item */
+  height: 150px;
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px;
+  background-color: "black";
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

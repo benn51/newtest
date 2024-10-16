@@ -9,6 +9,7 @@ import {
   IconButton,
   Center,
 } from "@chakra-ui/react";
+import Dashboard from "../Dashboard";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import backgroundImage2 from "../../assets/backroundImage2.png";
 import backgroundImage3 from "../../assets/backgroundImage3.png";
@@ -79,6 +80,18 @@ const Home = () => {
     setExperisActive(false);
     setProjectisActive(false);
     setSkillisActive(true);
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex < skillsDetailsAll.length - 1 ? prevIndex + 1 : prevIndex
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
   };
   return (
     <Flex align={"center"} justify={"center"} direction={"column"}>
@@ -151,35 +164,44 @@ const Home = () => {
           mx="auto"
         >
           <Flex align={"center"} direction={"row"} justify={"center"}>
-            <IconButton
+            <Dashboard />
+            {/* <IconButton
               aria-label="Scroll Left"
               icon={<ArrowBackIcon />}
               onClick={scrollLeft}
             />
             <Flex
               bg={"black"}
-              w={"80%"}
+              w={"80vw"}
               h={"50%"}
-              overflow={"hidden"}
+              overflow={"scroll"}
               justify={"center"}
               align={"center"}
               ref={newRef}
             >
-              {skillsDetailsAll.map((item: any) => (
-                <ProfileCards
-                  key={item.id}
-                  cardText={item.title}
-                  value={item.value}
-                  propgressLabel={item.value_label}
-                  yearsOfExperience={item.years}
-                />
-              ))}
+              <MotionBox
+                className="carousel"
+                animate={{ x: -currentIndex * 100 }} // Assuming each item has a fixed width of 200px
+                transition={{ type: "spring", stiffness: 300, damping: 300 }}
+                bg={"yellow"}
+                w={"80vw"}
+              >
+                {skillsDetailsAll.map((item: any) => (
+                  <ProfileCards
+                    key={item.id}
+                    cardText={item.title}
+                    value={item.value}
+                    propgressLabel={item.value_label}
+                    yearsOfExperience={item.years}
+                  />
+                ))}
+              </MotionBox>
             </Flex>
             <IconButton
               aria-label="Scroll Right"
               icon={<ArrowForwardIcon />}
               onClick={scrollRight}
-            />
+            /> */}
           </Flex>
         </Flex>
 
@@ -241,7 +263,8 @@ const Home = () => {
             </OrderedList>
           </Box>
         </Box>
-        <Box
+        <Flex
+          direction={"column"}
           bgImage={bb}
           bgAttachment={"fixed"}
           bgPosition={"center"}
@@ -252,6 +275,8 @@ const Home = () => {
           ref={projects}
           borderRadius={"10px"}
           overflow={"scroll"}
+          align={"center"}
+          justify={"center"}
         >
           <Flex align={"end"} w={"90%"} justify={"end"} pe={"10%"}>
             <ButtonGroup p={2}>
@@ -282,19 +307,21 @@ const Home = () => {
             </ButtonGroup>
           </Flex>
           <Flex
-            direction={"column"}
-            align={"start"}
-            justify={"start"}
+            w={"80vw"}
+            direction={"row"}
+            align={"center"}
+            justify={"center"}
             ps={"5%"}
             pt={"1%"}
             gap={4}
             h={"90%"}
+            bg={"blue.900"}
           >
             {projectDetails.map((item: any) => (
               <ProjectCards key={item.title} projects={item} />
             ))}
           </Flex>
-        </Box>
+        </Flex>
       </Flex>
     </Flex>
   );

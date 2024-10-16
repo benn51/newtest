@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { Card, CardBody, Text, Stack, Heading } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
 type propType = {
@@ -9,12 +9,12 @@ type propType = {
 };
 const ProfileCards = (props: propType) => {
   return (
-    <Box
-      h={"30vh"}
-      w={{ base: "5%", md: "2%", sm: "30%", lg: "10%" }}
-      bg="gray.300"
+    <Flex
+      h={"25vh"}
+      w={{ base: "50%", md: "50%", sm: "40%", lg: "70%" }}
+      bg="gray"
       border="1px solid"
-      borderColor="gray.300"
+      borderColor="gray.800"
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -22,17 +22,18 @@ const ProfileCards = (props: propType) => {
       flexShrink="0"
       rounded="md"
       textAlign="center"
+      align={"center"}
+      justify={"center"}
     >
       <Card
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
         variant="solid"
-        justify={"space-between"}
+        justify={"center"}
         borderRadius={"10px"}
-        colorScheme="purple"
         align={"center"}
-        bg={"blue.300"}
-        w={"95%"}
+        bg={"blue.100"}
+        w={"20vw"}
         h={"100%"}
       >
         <Stack>
@@ -55,7 +56,7 @@ const ProfileCards = (props: propType) => {
           </CircularProgress>
         </Box> */}
       </Card>
-    </Box>
+    </Flex>
   );
 };
 

@@ -19,9 +19,9 @@ const ProjectCards = (props: propTypes) => {
       templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
       w={"90vw"}
     >
-      <Card w={"80vw"} bg={"blue.300"}>
+      <Card w={"20vw"} bg={"blue.300"}>
         <CardHeader>
-          <Heading size="md" fontSize={"lg"} fontFamily={"monospace"}>
+          <Heading size="md" fontSize={"2xl"} fontFamily={"monospace"}>
             {" "}
             {props.projects?.title}
           </Heading>
