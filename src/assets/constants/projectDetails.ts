@@ -10,4 +10,9 @@ export const projectDetails = [
     project_detail: `Developed an online car store  backend `,
     github: "https://github.com/benn51/Online-Car-Sales-Store",
   },
+  {
+    title: "Online Car Sales Store",
+    project_detail: `Developed an online car store  backend `,
+    github: "https://github.com/benn51/Online-Car-Sales-Store",
+  },
 ];
