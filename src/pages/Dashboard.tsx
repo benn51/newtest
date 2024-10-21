@@ -101,7 +101,6 @@ const Dashboard = () => {
 
               <Carousel
                 responsive={responsive}
-                // infinite={true}
                 className="owl-carousel owl-theme skill-slider"
               >
                 {skillsDetailsAll.map((item: any) => (
