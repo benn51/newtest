@@ -1,5 +1,6 @@
-import { Flex } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Flex, Button } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+
 import {
   Popover,
   PopoverTrigger,
@@ -12,14 +13,31 @@ type propTypes = {
   linkTo: string;
   linkPage: string;
   linkName: string;
+  changeActive: boolean;
+  resetActive: () => void;
 };
 const PopoverComoponent = (props: propTypes) => {
   const dd = ["abeeb", "gemeda"];
+  const [active, setActive] = useState(false);
+  const manageActive = () => {
+    setActive(true);
+    props.resetActive();
+  };
+  useEffect(() => {
+    setActive(false);
+  }, [props.changeActive]);
   return (
     <Flex>
-      <Popover>
+      <Popover trigger={"hover"}>
         <PopoverTrigger>
-          <Link to={`/${props.linkTo}`}> {props.linkName}</Link>
+          <Button
+            w={"110px"}
+            variant={"link"}
+            colorScheme={active ? "orange" : "blue"}
+            onClick={manageActive}
+          >
+            {props.linkName}
+          </Button>
         </PopoverTrigger>
         <PopoverContent w={"150px"}>
           <PopoverArrow />

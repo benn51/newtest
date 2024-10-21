@@ -1,8 +1,8 @@
-import { Button, Flex} from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 
 type propsType = {
   menuItems: any[];
-  selectItem: () => void;
+  // selectItem: () => void;
 };
 const DropDownMenu = (props: propsType) => {
   return (
