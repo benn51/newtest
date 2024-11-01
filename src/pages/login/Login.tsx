@@ -19,34 +19,16 @@ const Login = () => {
 
   const loginUser = async () => {
     console.log(userName, password);
-    const data = await axios.post(
-      "https://3kq8o6fg7b.execute-api.us-east-1.amazonaws.com/dev/login",
-      { username: userName, password: "new" },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        },
-      }
-    );
-    console.log(data);
+    try {
+      const data = await axios.post("http://localhost:5001/auth/login", {
+        username: userName,
+        password: password,
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  // const loginUser = () => {
-  //   fetch("https://3kq8o6fg7b.execute-api.us-east-1.amazonaws.com/dev/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Access-Control-Allow-Origin": "*",
-  //       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-  //     },
-  //     body: JSON.stringify({ key: "value" }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => console.log(data))
-  //     .catch((error) => console.error("Error:", error));
-  // };
 
   return (
     //   <Flex
